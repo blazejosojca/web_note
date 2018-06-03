@@ -1,0 +1,2 @@
+# This file is required. The dir web_note/static will be added to project.
+# Django will collect static files. Next these files wil be placed in the di web_notes/static.

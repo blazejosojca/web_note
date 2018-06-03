@@ -1,0 +1,60 @@
+{% load bootstrap4 %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0,
+    maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web notes</title>
+
+    {% bootstrap_css %}
+
+</head>
+<body>
+<header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url "notes:index" %}">Web Notes</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url "notes:topics" %}">Topics<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-right">
+                    {% if user.is_authenticated %}
+                    <li><a>Witaj, {{ user.username }}.</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url "notes_users:logout" %}">Log out</a></li>
+                </ul>
+                    {% else %}
+                <ul class="navbar-nav mt-2 mt-lg-0">
+                    <li><a class="nav-link" href="{% url 'notes_users:login' %}">Sign In</a></li>
+                    <li><a class="nav-link" href="{% url 'notes_users:register' %}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+<div class="container">
+    <div class="page-header">
+        {% block header %} {% endblock header %}
+    </div>
+    <div>
+        {% block content %} {% endblock content %}
+    </div>
+</div>
+
+{% bootstrap_javascript jquery='full' %}
+
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{%  extends "notes/base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <div class="text-center">
+            <h2>Register Form</h2>
+        </div>
+    </div>
+    <div class="row">
+        <form method="post" action="{% url 'notes_users:register' %}">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+        <button class="btn btn-secondary" name="submit">Register</button>
+        <input type="hidden" name="next" value="{% url 'notes:index' %}"/>
+    </form>
+
+    </div>
+
+
+
+{% endblock content %}

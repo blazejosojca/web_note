@@ -1,0 +1,37 @@
+{% extends 'notes/base.html' %}
+
+{% load bootstrap4 %}
+
+    {% block header %}
+    <div class="container">
+        <div class="jumbotron">
+            Topics
+        </div>
+    </div>
+    {% endblock header %}
+
+    {% block content %}
+        <div class="container">
+            <ul class="list-group">
+                {% for topic in topics %}
+                    <li class="list-group-item">
+                        <h3>
+                            <a href="{% url 'notes:topic' topic.id %}"> {{ topic }}</a>
+                        </h3>
+                        <h3 class="btn btn-info">
+                            <a href="{% url 'notes:edit_topic' topic.id %}">Edit</a>
+                        </h3>
+                        <h3 class="btn btn-warning">
+                            <a href="{% url 'notes:delete_topic' topic.id %}">Delete</a>
+                        </h3>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item" >None topics was added yet!</li>
+                {% endfor %}
+            </ul>
+        <h3 class="btn btn-default ">
+            <a href="{% url 'notes:new_topic' %}">Add new topic</a>
+        </h3>
+        </div>
+
+{% endblock content %}
