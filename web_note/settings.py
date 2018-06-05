@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0)xczigie8kyfr!mnhef9ft9^+#^t)*8g-4($#8j6&r9+gxfc5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -150,7 +150,8 @@ if os.getcwd() == '/app':
 
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['web-notes123.herokuapp.com']
+    DEBUG = False
 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT = 'staticfiles'
