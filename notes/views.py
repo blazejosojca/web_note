@@ -35,8 +35,8 @@ def topics(request):
 
 
 @login_required
-def topic(request, pk):
-    topic = Topic.objects.get(pk = pk)
+def topic(request, topic_pk):
+    topic = get_object_or_404(Topic, pk=topic_pk)
     check_topic_owner(request, topic)
     # displays topic owned by user or returns 404 page
     entries = topic.entry_set.order_by('-entry_date_added')
@@ -62,7 +62,7 @@ def new_topic(request):
 
 @login_required
 def edit_topic(request, topic_pk):
-    topic = Topic.objects.get(pk=topic_pk)
+    topic = get_object_or_404(Topic, pk=topic_pk)
     check_topic_owner(request, topic)
     if request.method != 'POST':
         form = TopicForm(instance=topic)
@@ -89,7 +89,7 @@ def delete_topic(request, topic_pk):
 
 @login_required
 def new_entry(request, topic_pk):
-    topic = Topic.objects.get(pk=topic_pk)
+    topic = get_object_or_404(Topic, pk=topic_pk)
     check_topic_owner(request, topic)
     if request.method != 'POST':
         form = EntryForm()
@@ -107,7 +107,7 @@ def new_entry(request, topic_pk):
 
 @login_required
 def edit_entry(request, entry_pk):
-    entry = Entry.objects.get(pk=entry_pk)
+    entry = get_object_or_404(Entry,pk=entry_pk)
     topic = entry.topic
     check_topic_owner(request, topic)
     if request.method != 'POST':
