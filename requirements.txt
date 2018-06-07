@@ -11,6 +11,7 @@ jinjalint==0.1
 MarkupSafe==1.0
 parsy==1.1.0
 psycopg2==2.7.4
+psycopg2-binary==2.7.4
 pytz==2018.3
 static3==0.7.0
 whitenoise==3.3.1
