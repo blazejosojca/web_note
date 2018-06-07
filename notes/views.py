@@ -23,17 +23,15 @@ def topics(request):
     ctx = {'topics': topics}
     return render(request, 'notes/topics.html', ctx)
 
-
-def error_404(request):
-    data = {}
-    return render(request, 'notes/error_404.html', data)
-
-
-def error_500(request):
-    data = {}
-    return render(request, 'notes/error_500.html', data)
-    #GO TO:
-#     http://thepythondjango.com/designing-custom-404-500-error-pages-django/
+#
+# def error_404(request):
+#     data = {}
+#     return render(request, 'notes/error_404.html', data)
+#
+#
+# def error_500(request):
+#     data = {}
+#     return render(request, 'notes/error_500.html', data)
 
 
 @login_required
@@ -87,7 +85,6 @@ def delete_topic(request, topic_pk):
         return HttpResponseRedirect("notes:index")
     ctx = {'topic': topic}
     return render(request, 'notes/delete_topic_confirm.html', ctx)
-
 
 
 @login_required

@@ -1,6 +1,5 @@
 # define url patterns for app notes
-from django.conf.urls import url, handler404, handler500
-
+from django.conf.urls import url
 
 from . import views
 
@@ -18,5 +17,3 @@ urlpatterns = [
     url(r'^delete_entry/(?P<entry_pk>\d+)/$', views.delete_entry, name='delete_entry'),
 ]
 
-handler404 = views.error_404
-handler500 = views.error_500
