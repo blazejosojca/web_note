@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import django_heroku
-import sys
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +27,7 @@ SECRET_KEY = '0)xczigie8kyfr!mnhef9ft9^+#^t)*8g-4($#8j6&r9+gxfc5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -62,7 +62,7 @@ ROOT_URLCONF = 'web_note.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'notes/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,13 +140,11 @@ BOOTSTRAP4 = {
 django_heroku.settings(locals())
 
 
-
-
 if os.getcwd() == '/app':
     import dj_database_url
     DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost')
-    }
+                'default': dj_database_url.config(default='postgres://localhost')
+                }
 
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -155,5 +153,4 @@ if os.getcwd() == '/app':
 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT = 'staticfiles'
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),
-)
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'))
